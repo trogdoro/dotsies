@@ -2,7 +2,7 @@ class StoryToDotsies
 
   #
   # > Summary
-  # Converts html files into a format linke this:
+  # Converts html files into a format like this:
   # http://dotsies.org/stories/the-runaway-couple.html.
   #
   # Reads in an html file (presumably a story with paragraphs in
