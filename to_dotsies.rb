@@ -126,9 +126,15 @@ class ToDotsies
     l.join ''
   end
 
+end
 
-  def self.template txt
-    %`
+
+inputfilename = ARGV[0]
+outputfilename = ARGV[1]
+
+content = File.read inputfilename
+content = ToDotsies.convert content
+content = %`
       <link href="http://dotsies.org/dotsies.css" rel="stylesheet" type="text/css">
       <style type="text/css">
         body {
@@ -177,18 +183,7 @@ class ToDotsies
         you'll be reading only dots!
       </center>
 
-      #{txt}
+      #{content}
     `
-  end
-
-end
-
-
-inputfilename = ARGV[0]
-outputfilename = ARGV[1]
-
-content = File.read inputfilename
-content = ToDotsies.convert content
-content = ToDotsies.template content
-
+    
 File.open(outputfilename, "w") { |f| f << content }
