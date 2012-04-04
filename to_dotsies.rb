@@ -20,7 +20,7 @@ class ToDotsies
   def self.gradually_convert txt
 
     #
-    # Read in file, and split into chunks (words, whitespace, and html tags)
+    # Read in txt, and split into chunks (words, whitespace, and html tags)
     #
 
     # Make first paragraph bigger
