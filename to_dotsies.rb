@@ -1,5 +1,3 @@
-require 'pp'
-
 class ToDotsies
 
   #
@@ -193,4 +191,4 @@ content = File.read inputfilename
 content = ToDotsies.convert content
 content = ToDotsies.template content
 
-File.open(outputfilename, "w") { |f| f << txt }
+File.open(outputfilename, "w") { |f| f << content }
