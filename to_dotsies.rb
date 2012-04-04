@@ -9,17 +9,7 @@ class ToDotsies
   # <p> tags), and outputs an html file.
   #
   # > Dependencies
-  # This file currently has dependencies on Xiki.  At the beginning
-  # it calles a Xiki function to get the filename.  At the end it
-  # tells Xiki to send the html to the browser so we can see it (in
-  # addition to the script writing to a file).
-  #
-  # > Filenames
-  # Normally the input file passed will end in "--in.html".  If it
-  # doesn't, the script looks for a file that ends that way.  If it
-  # finds it, it uses it.  If it doesn't find it, it assumes the
-  # file passed was an input file, and so renames it to end that way
-  # before moving on.
+  # This file currently has dependencies on Ruby 1.9.2.
   #
   # > Known problems
   # What about existing <b> and <u> tags in input files?...
@@ -130,11 +120,10 @@ end
 
 
 inputfilename = ARGV[0]
-outputfilename = ARGV[1]
 
 content = File.read inputfilename
 content = ToDotsies.gradually_convert content
-content = %`
+print %`
       <link href="http://dotsies.org/dotsies.css" rel="stylesheet" type="text/css">
       <style type="text/css">
         body {
@@ -168,5 +157,3 @@ content = %`
 
       #{content}
     `
-
-File.open(outputfilename, "w") { |f| f << content }
