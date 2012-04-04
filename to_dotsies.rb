@@ -27,7 +27,7 @@ class ToDotsies
   #   - And make style to make <em> be just italic, etc.
   #
 
-  def self.convert txt
+  def self.gradually_convert txt
 
     #
     # Read in file, and split into chunks (words, whitespace, and html tags)
@@ -133,7 +133,7 @@ inputfilename = ARGV[0]
 outputfilename = ARGV[1]
 
 content = File.read inputfilename
-content = ToDotsies.convert content
+content = ToDotsies.gradually_convert content
 content = %`
       <link href="http://dotsies.org/dotsies.css" rel="stylesheet" type="text/css">
       <style type="text/css">
@@ -166,24 +166,7 @@ content = %`
         }
       </style>
 
-      <h1 style="font-size:130px;">hi there!</h1>
-      <h1>can you read this?</h1>
-
-      <center style="font-family:arial; font-size:15px; margin:0px 20%">
-        Read this story to gradually learn to read using
-        <a href="http://dotsies.org">dots instead of
-        letters!</a>
-        Move your mouse over the green
-        underlines
-        when
-        you need a hint.
-        If you get to
-        the
-        end,
-        you'll be reading only dots!
-      </center>
-
       #{content}
     `
-    
+
 File.open(outputfilename, "w") { |f| f << content }
